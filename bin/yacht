@@ -17,8 +17,9 @@ fn__main() {
   u | up) task__up "$@" ;;
   d | down) task__down "$@" ;;
   r | reinit) task__reinit "$@" ;;
-  c | console) task__console "$@" ;;
   cp | composer) task__composer "$@" ;;
+  c | console) task__console "$@" ;;
+  t | test) task__test "$@" ;;
   cc | cache-clear) task__cacheClear "$@" ;;
   dc | docker-compose) task__dockerCompose "$@" ;;
   *)
@@ -62,6 +63,10 @@ task__composer() {
 
 task__console() {
   fn__console "$@"
+}
+
+task__test(){
+  fn__dockerComposeExec php-fpm php bin/phpunit "$@"
 }
 
 fn__console() {

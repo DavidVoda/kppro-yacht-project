@@ -1,0 +1,94 @@
+#!/bin/bash
+
+scriptDir=$(dirname "$(realpath -s "$0")")
+rootDir=$(dirname "$scriptDir")
+
+if [[ $# == 0 ]]; then
+  echo "Yacht project"
+  exit 0
+fi
+
+task="$1"
+shift
+
+fn__main() {
+
+  case "$task" in
+  u | up) task__up "$@" ;;
+  d | down) task__down "$@" ;;
+  r | reinit) task__reinit "$@" ;;
+  c | console) task__console "$@" ;;
+  cp | composer) task__composer "$@" ;;
+  cc | cache-clear) task__cacheClear "$@" ;;
+  dc | docker-compose) task__dockerCompose "$@" ;;
+  *)
+    echo "Unknown command"
+    exit 0
+    ;;
+  esac
+}
+
+task__up() {
+  fn__dockerCompose up -d
+}
+
+task__down() {
+  fn__dockerCompose down
+}
+
+task__reinit() {
+  task__down
+
+  task__up
+
+  task__cacheClear
+
+  fn__doctrineMigrations
+
+  fn__doctrineFixtures
+}
+
+task__dockerCompose() {
+  fn__dockerCompose "$@"
+}
+
+task__cacheClear() {
+  fn__console cache:clear
+}
+
+task__composer() {
+  fn__composer "$@"
+}
+
+task__console() {
+  fn__console "$@"
+}
+
+fn__console() {
+  fn__dockerComposeExec php-fpm php bin/console "$@"
+}
+
+fn__composer() {
+  docker run --rm --interactive --tty \
+    --volume $PWD:/app \
+    --user $(id -u):$(id -g) \
+    composer "$@"
+}
+
+fn__dockerComposeExec() {
+  fn__dockerCompose exec "$@"
+}
+
+fn__dockerCompose() {
+  docker-compose -f "$rootDir/docker/docker-compose.yml" "$@"
+}
+
+fn__doctrineMigrations() {
+  fn__console doctrine:migrations:migrate --no-interaction
+}
+
+fn__doctrineFixtures() {
+  fn__console doctrine:fixtures:load -n
+}
+
+fn__main "$@"

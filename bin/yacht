@@ -81,7 +81,9 @@ fn__composer() {
 }
 
 fn__dockerComposeExec() {
-  fn__dockerCompose exec "$@"
+  fn__dockerCompose exec \
+    --user $(id -u):$(id -g) \
+    "$@"
 }
 
 fn__dockerCompose() {

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Yacht{% endblock %}
+
+{% block body %}
+    <h1>Yacht</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ yacht.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ yacht.name }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ yacht.model }}</td>
+            </tr>
+            <tr>
+                <th>PassengerCount</th>
+                <td>{{ yacht.passengerCount }}</td>
+            </tr>
+            <tr>
+                <th>PricePerDay</th>
+                <td>{{ yacht.pricePerDay }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('yacht_index') }}">back to list</a>
+
+    <a href="{{ path('yacht_edit', {'id': yacht.id}) }}">edit</a>
+
+    {{ include('yacht/_delete_form.html.twig') }}
+{% endblock %}

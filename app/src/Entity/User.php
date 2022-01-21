@@ -16,22 +16,22 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    public function __construct(
-        #[ORM\Id]
-        #[ORM\Column(type: 'uuid', unique: true)]
-        #[ORM\GeneratedValue(strategy: 'CUSTOM')]
-        #[ORM\CustomIdGenerator(UuidGenerator::class)]
-        private UuidInterface $id,
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+    #[ORM\CustomIdGenerator(UuidGenerator::class)]
+    private UuidInterface $id;
 
-        #[ORM\Column(type: 'string', length: 180, unique: true)]
-        private string $email,
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private string $email;
 
-        #[ORM\Column]
-        private string $password,
+    #[ORM\Column]
+    private string $password;
 
-        #[ORM\Column(type: 'json')]
-        private array $roles = [],
-    )
+    #[ORM\Column(type: 'json')]
+    private array $roles = [];
+
+    public function __construct()
     {
     }
 

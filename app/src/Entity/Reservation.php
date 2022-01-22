@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
 #[ORM\Entity]
@@ -38,11 +39,11 @@ class Reservation
     }
 
     /**
-     * @param UuidInterface $id
+     * @param string $id
      */
-    public function setId(UuidInterface $id): void
+    public function setId(string $id): void
     {
-        $this->id = $id;
+        $this->id = Uuid::fromString($id);
     }
 
     /**

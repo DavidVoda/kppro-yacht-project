@@ -5,7 +5,6 @@ namespace App\DataFixtures;
 use App\Entity\Yacht;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Ramsey\Uuid\Uuid;
 
 class YachtFixtures extends Fixture
 {
@@ -16,14 +15,14 @@ class YachtFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        $yacht = new Yacht();
-        $yacht -> setId(self::YACHT_1_ID);
-        $yacht -> setName('St. Johnson');
-        $yacht -> setModel('Kepork 2000');
-        $yacht -> setPassengerCount(8);
-        $yacht -> setPricePerDay(999);
+        $yacht1 = new Yacht();
+        $yacht1 -> setId(self::YACHT_1_ID);
+        $yacht1 -> setName('St. Johnson');
+        $yacht1 -> setModel('Kepork 2000');
+        $yacht1 -> setPassengerCount(8);
+        $yacht1 -> setPricePerDay(999);
 
-        $manager->persist($yacht);
+        $manager->persist($yacht1);
 
         $yacht2 = new Yacht();
         $yacht2 -> setId(self::YACHT_2_ID);
@@ -51,8 +50,6 @@ class YachtFixtures extends Fixture
         $yacht4 -> setPricePerDay(2010);
 
         $manager->persist($yacht4);
-
-        //TODO: DANIEL add more fixtures
 
         $manager->flush();
     }

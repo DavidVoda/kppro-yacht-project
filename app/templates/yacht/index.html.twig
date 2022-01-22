@@ -26,7 +26,9 @@
                 <td>{{ yacht.pricePerDay }}</td>
                 <td>
                     <a href="{{ path('yacht_show', {'id': yacht.id}) }}">show</a>
-                    <a href="{{ path('yacht_edit', {'id': yacht.id}) }}">edit</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('yacht_edit', {'id': yacht.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

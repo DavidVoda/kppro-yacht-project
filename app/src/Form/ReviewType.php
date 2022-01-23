@@ -16,6 +16,7 @@ class ReviewType extends AbstractType
             ->add('text')
             ->add('rating')
             ->add('yacht')
+            ->add('createDate')
         ;
     }
 

@@ -23,6 +23,7 @@ class UserFixtures extends Fixture
     {
         $user1 = new User();
         $user1 -> setEmail('admin@gmail.com');
+        $user1 -> setName('Karl Ground');
         $password = $this->hasher->hashPassword($user1, 'Heslo123');
         $user1->setPassword($password);
         $user1 -> setRoles(['ROLE_ADMIN']);
@@ -31,6 +32,7 @@ class UserFixtures extends Fixture
 
         $user2 = new User();
         $user2 -> setEmail('user@gmail.com');
+        $user2 -> setName('Luke Sosage');
         $password = $this->hasher->hashPassword($user2, 'Heslo123');
         $user2->setPassword($password);
         //$user2 -> setRoles(['ADMIN']);

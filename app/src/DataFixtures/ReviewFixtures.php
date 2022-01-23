@@ -8,6 +8,8 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Ramsey\Uuid\Uuid;
+use DateTimeImmutable;
+use DateTimeInterface;
 
 class ReviewFixtures extends Fixture
 {
@@ -27,6 +29,10 @@ class ReviewFixtures extends Fixture
         $review1 -> setUser($user2);
         $review1 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
         $review1 -> setRating(8);
+        $review1 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review1);
 
@@ -36,6 +42,10 @@ class ReviewFixtures extends Fixture
         $review2 -> setUser($user2);
         $review2 -> setText('Very good yach, had great time');
         $review2 -> setRating(10);
+        $review2 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review2);
 
@@ -45,6 +55,10 @@ class ReviewFixtures extends Fixture
         $review3 -> setUser($user2);
         $review3 -> setText('Not best one, good for the price though.');
         $review3 -> setRating(7);
+        $review3 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review3);
 
@@ -54,6 +68,10 @@ class ReviewFixtures extends Fixture
         $review4 -> setUser($user2);
         $review4 -> setText('Amazing!');
         $review4 -> setRating(10);
+        $review4 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review4);
 
@@ -63,6 +81,10 @@ class ReviewFixtures extends Fixture
         $review5 -> setUser($user2);
         $review5 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
         $review5 -> setRating(5);
+        $review5 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review1);
 
@@ -72,6 +94,10 @@ class ReviewFixtures extends Fixture
         $review6 -> setUser($user2);
         $review6 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
         $review6 -> setRating(8);
+        $review6 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review6);
 
@@ -81,6 +107,10 @@ class ReviewFixtures extends Fixture
         $review7 -> setUser($user2);
         $review7 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
         $review7 -> setRating(8);
+        $review7 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review7);
 
@@ -90,6 +120,10 @@ class ReviewFixtures extends Fixture
         $review8 -> setUser($user2);
         $review8 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
         $review8 -> setRating(8);
+        $review8 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review8);
 
@@ -99,6 +133,10 @@ class ReviewFixtures extends Fixture
         $review9 -> setUser($user2);
         $review9 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
         $review9 -> setRating(8);
+        $review9 -> setCreateDate(DateTimeImmutable::createFromFormat(
+            DateTimeInterface::RFC3339_EXTENDED,
+            '2021-02-01T12:00:00.000+00:00'
+        ));
 
         $manager->persist($review9);
 

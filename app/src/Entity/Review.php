@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 #[ORM\Entity]
 class Review
@@ -27,6 +29,9 @@ class Review
 
     #[ORM\Column]
     private int $rating;
+
+    #[ORM\Column(type: 'datetimetz_immutable')]
+    private DateTimeImmutable $createDate;
 
     public function __construct()
     {
@@ -112,4 +117,21 @@ class Review
     {
         $this->rating = $rating;
     }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getCreateDate(): DateTimeImmutable
+    {
+        return $this->createDate;
+    }
+
+    /**
+     * @param DateTimeImmutable $createDate
+     */
+    public function setCreateDate(DateTimeImmutable $createDate): void
+    {
+        $this->createDate = $createDate;
+    }
+
 }

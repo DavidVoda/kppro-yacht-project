@@ -3,7 +3,7 @@
 {% block title %}Edit Yacht{% endblock %}
 
 {% block body %}
-    <h1>Edit Yacht</h1>
+    <h1>Edit Yacht - {{ yacht.name }}</h1>
 
     {{ include('yacht/_form.html.twig', {'button_label': 'Update', 'type': 'edit'}) }}
 

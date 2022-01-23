@@ -19,6 +19,7 @@ class YachtType extends AbstractType
             ->add('id', HiddenType::class)
             ->add('name')
             ->add('model')
+            ->add('description')
             ->add('passengerCount')
             ->add('pricePerDay')
             ->add('image', FileType::class, [

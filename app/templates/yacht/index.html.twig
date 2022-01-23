@@ -3,47 +3,40 @@
 {% block title %}Yacht index{% endblock %}
 
 {% block body %}
-    <h1>Yacht index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Model</th>
-                <th>PassengerCount</th>
-                <th>PricePerDay</th>
-                <th>Images</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <h1>List of yachts</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
         {% for yacht in yachts %}
-            <tr>
-                <td>{{ yacht.id }}</td>
-                <td>{{ yacht.name }}</td>
-                <td>{{ yacht.model }}</td>
-                <td>{{ yacht.passengerCount }}</td>
-                <td>{{ yacht.pricePerDay }}</td>
-                <td>
-                    {% for image in yacht.imageFilenames %}
-                        <img src="{{ asset('uploads/yacht-images/' ~ image) }}" style="width: 1rem; height: 1rem; object-fit: cover">
-                    {% endfor %}
-                </td>
-                <td>
-                    <a href="{{ path('yacht_show', {'id': yacht.id}) }}">show</a>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path('yacht_edit', {'id': yacht.id}) }}">edit</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div class="col">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{ asset('uploads/yacht-images/' ~ yacht.getFirstImage) }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ yacht.name }}</h5>
+                        <p class="card-text">{{ yacht.description }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="font-weight: bold">Model: <p>{{ yacht.model }}</p></li>
+                        <li class="list-group-item" style="font-weight: bold">Maximum number of persons:
+                            <p>{{ yacht.passengerCount }}</p></li>
+                        <li class="list-group-item" style="font-weight: bold">Price per day:
+                            <p>{{ yacht.pricePerDay }}</p></li>
+                    </ul>
+                    <div class="card-footer">
+                        <a class="btn btn-dark" href="{{ path('yacht_show', {'id': yacht.id}) }}">Show detail</a>
+                        <a class="btn btn-dark" href="{{ path('reservation_new', {'id': yacht.id}) }}"
+                           class="card-link">Book</a>
 
-    <a href="{{ path('yacht_new') }}">Create new</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a class="btn btn-danger" href="{{ path('yacht_edit', {'id': yacht.id}) }}">Edit</a>
+                            <a class="btn btn-danger" href="{{ path('yacht_delete', {'id': yacht.id}) }}">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="col">
+            <a type="button" class="btn btn-outline-secondary card h-100" href="{{ path('yacht_new') }}">+ Add new yacht</a>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}

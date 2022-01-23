@@ -1,4 +1,14 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.yacht) }}
+    {{ form_row(form.startTime) }}
+    {{ form_row(form.endTime) }}
+
+    <div class="input-group date">
+        <input type="text" class="form-control" value="12-02-2012">
+        <div class="input-group-addon">
+            <span class="glyphicon glyphicon-th"></span>
+        </div>
+    </div>
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

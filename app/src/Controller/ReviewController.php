@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Review;
 use App\Entity\User;
+use App\Entity\Yacht;
 use App\Form\ReviewType;
 use Doctrine\ORM\EntityManagerInterface;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -74,6 +76,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/{id}', name: 'review_delete', methods: ['POST'])]
     public function delete(Request $request, Review $review, EntityManagerInterface $entityManager): Response
     {
@@ -83,5 +86,17 @@ class ReviewController extends AbstractController
         }
 
         return $this->redirectToRoute('review_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/', name: 'review_yacht', methods: ['GET'])]
+    public function getReviewsForYacht(EntityManagerInterface $entityManager, Yacht $yacht): Response
+    {
+        $reviews = $entityManager
+            ->getRepository(Review::class)
+            ->findBy(['yacht' => $yacht]);
+
+        return $this->render('review/index.html.twig', [
+            'reviews' => $reviews,
+        ]);
     }
 }

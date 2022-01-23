@@ -8,16 +8,16 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>StartTime</th>
-                <th>EndTime</th>
+                <th>Yacht</th>
+                <th>Start date</th>
+                <th>End date</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for reservation in reservations %}
             <tr>
-                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.yacht }}</td>
                 <td>{{ reservation.startTime ? reservation.startTime|date('Y-m-d H:i:s T') : '' }}</td>
                 <td>{{ reservation.endTime ? reservation.endTime|date('Y-m-d H:i:s T') : '' }}</td>
                 <td>

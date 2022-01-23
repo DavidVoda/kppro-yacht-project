@@ -25,6 +25,7 @@ class YachtFixtures extends Fixture
         $yacht1 -> setId(self::YACHT_1_ID);
         $yacht1 -> setName('St. Johnson');
         $yacht1 -> setModel('Kepork 2000');
+        $yacht1 -> setDescription('Big yacht');
         $yacht1 -> setPassengerCount(8);
         $yacht1 -> setPricePerDay(999);
 
@@ -37,6 +38,7 @@ class YachtFixtures extends Fixture
         $yacht2 -> setId(self::YACHT_2_ID);
         $yacht2 -> setName('HMS Fildos');
         $yacht2 -> setModel('Kepork 2012');
+        $yacht2 -> setDescription('Big yacht');
         $yacht2 -> setPassengerCount(8);
         $yacht2 -> setPricePerDay(1500);
 
@@ -48,6 +50,7 @@ class YachtFixtures extends Fixture
         $yacht3 -> setId(self::YACHT_3_ID);
         $yacht3 -> setName('Mr. Anderson');
         $yacht3 -> setModel('Matrix 1999');
+        $yacht3 -> setDescription('Big yacht');
         $yacht3 -> setPassengerCount(9);
         $yacht3 -> setPricePerDay(1350);
 
@@ -60,6 +63,7 @@ class YachtFixtures extends Fixture
         $yacht4 -> setId(self::YACHT_4_ID);
         $yacht4 -> setName('IMN Carpenter');
         $yacht4 -> setModel('Kidos 4C');
+        $yacht4 -> setDescription('Big yacht');
         $yacht4 -> setPassengerCount(12);
         $yacht4 -> setPricePerDay(2010);
 

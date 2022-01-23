@@ -22,6 +22,9 @@ class Yacht
     private string $model;
 
     #[ORM\Column]
+    private string $description;
+
+    #[ORM\Column]
     private int $passengerCount;
 
     #[ORM\Column]
@@ -84,6 +87,22 @@ class Yacht
     }
 
     /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
      * @return int
      */
     public function getPassengerCount(): int
@@ -138,11 +157,21 @@ class Yacht
         );
     }
 
+    public function getFirstImage(): string
+    {
+        //TODO handle null pointer
+        return array_values($this->getImageFilenames())[0];
+    }
+
     /**
      * @param string[] $imageFilenames
      */
     private function setImageFilenames(array $imageFilenames): void
     {
         $this->imageFilenames = $imageFilenames;
+    }
+
+    public function __toString() {
+        return $this->name;
     }
 }

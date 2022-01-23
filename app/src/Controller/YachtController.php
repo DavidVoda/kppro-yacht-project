@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Domain\Yacht\YachtImageAssigner;
+use App\Entity\Review;
 use App\Entity\User;
 use App\Entity\Yacht;
 use App\Form\YachtType;
@@ -65,8 +66,13 @@ class YachtController extends AbstractController
     #[Route('/{id}', name: 'yacht_show', methods: ['GET'])]
     public function show(Yacht $yacht): Response
     {
+        $reviews = $this->entityManager
+            ->getRepository(Review::class)
+            ->findBy(['yacht' => $yacht]);
+
         return $this->render('yacht/show.html.twig', [
             'yacht' => $yacht,
+            'reviews' => $reviews,
         ]);
     }
 

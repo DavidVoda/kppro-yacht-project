@@ -18,6 +18,10 @@ class Review
     #[ORM\JoinColumn(nullable: false)]
     private Yacht $yacht;
 
+    #[ORM\ManyToOne(targetEntity: User::class, cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private User $user;
+
     #[ORM\Column]
     private string $text;
 
@@ -59,6 +63,22 @@ class Review
     public function setYacht(Yacht $yacht): void
     {
         $this->yacht = $yacht;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 
     /**

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reservation index{% endblock %}
+{% block title %}Reservations{% endblock %}
 
 {% block body %}
-    <h1>Reservation index</h1>
+    <h1>Reservations</h1>
 
     <table class="table">
         <thead>
@@ -11,7 +11,9 @@
                 <th>Yacht</th>
                 <th>From - To</th>
                 <th>Price</th>
-                <th>actions</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>actions</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -22,10 +24,14 @@
                 <td>
                     <u title="{{ reservation.yacht.pricePerDay }} € x {{ reservation.days }} days">{{ reservation.totalPrice }} €</u>
                 </td>
-                <td>
-                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}">show</a>
-                    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
-                </td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>
+                        <a class="btn btn-danger" href="{{ path('reservation_edit', {'id': reservation.id}) }}">Edit</a>
+                        <a class="btn btn-danger"
+                           href="{{ path('reservation_delete', {'id': reservation.id}) }}">Delete</a>
+
+                    </td>
+                {% endif %}
             </tr>
         {% else %}
             <tr>
@@ -35,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('yacht_index') }}">Find a yacht to book</a>
+    <a class="btn btn-dark" href="{{ path('yacht_index') }}">Find a yacht to book</a>
 {% endblock %}

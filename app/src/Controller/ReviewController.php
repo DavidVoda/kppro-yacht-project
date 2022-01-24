@@ -17,7 +17,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 #[Route('/review')]
 class ReviewController extends AbstractController
 {
-    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/', name: 'review_index', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager): Response
     {
@@ -31,14 +30,15 @@ class ReviewController extends AbstractController
     }
 
     #[Route('/new', name: 'review_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, Uuid $yacht): Response
     {
         $review = new Review();
+//        $review->setYacht($yacht);
         $form = $this->createForm(ReviewType::class, $review);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $review ->
+            $review->setId(Uuid::uuid4());
 
             $entityManager->persist($review);
             $entityManager->flush();
@@ -60,6 +60,7 @@ class ReviewController extends AbstractController
         ]);
     }
 
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/{id}/edit', name: 'review_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Review $review, EntityManagerInterface $entityManager): Response
     {
@@ -82,23 +83,11 @@ class ReviewController extends AbstractController
     #[Route('/{id}', name: 'review_delete', methods: ['POST'])]
     public function delete(Request $request, Review $review, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$review->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $review->getId(), $request->request->get('_token'))) {
             $entityManager->remove($review);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('review_index', [], Response::HTTP_SEE_OTHER);
-    }
-
-    #[Route('/', name: 'review_yacht', methods: ['GET'])]
-    public function getReviewsForYacht(EntityManagerInterface $entityManager, Yacht $yacht): Response
-    {
-        $reviews = $entityManager
-            ->getRepository(Review::class)
-            ->findBy(['yacht' => $yacht]);
-
-        return $this->render('review/index.html.twig', [
-            'reviews' => $reviews,
-        ]);
     }
 }

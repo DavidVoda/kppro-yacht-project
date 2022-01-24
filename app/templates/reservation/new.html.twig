@@ -3,7 +3,7 @@
 {% block title %}New Reservation{% endblock %}
 
 {% block body %}
-    <h1>Reserve {{ reservation.yacht.name }}</h1>
+    <h1>Book {{ reservation.yacht.name }}</h1>
 
     {{ include('reservation/_form.html.twig', {reservation: reservation, disabledDates: disabledDates}) }}
 

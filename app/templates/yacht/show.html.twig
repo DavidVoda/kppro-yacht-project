@@ -42,8 +42,13 @@
         </tr>
         </tbody>
     </table>
-
-    <div class="row row-cols-3 g-0">
+    <div class="d-flex bd-highlight">
+        <div class="flex-grow-1"><h2>Yacht reviews</h2></div>
+        <div>
+            <a class="btn btn-primary" href="{{ path('review_new', {'id': yacht.id}) }}">Rate</a>
+        </div>
+    </div>
+    <div class="row row-cols-3 g-1">
         {% for review in reviews %}
             <div class="col">
                 <div class="list-group-item list-group-item-action">
@@ -52,7 +57,7 @@
                         <small>{{ review.rating }}/10</small>
                     </div>
                     <p class="mb-1">{{ review.text }}</p>
-                    <small class="text-muted">{{ review.createDate ? review.createDate|date('Y-m-d') : '' }}</small>
+                    <small class="text-muted">{{ review.createDate ? review.createDate|date('d.m.Y') : '' }}</small>
                 </div>
             </div>
         {% endfor %}

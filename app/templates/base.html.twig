@@ -22,38 +22,38 @@
 <body>
 <div class="container pb-5">
     <div class="row">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><h2 class="text-warning">LogoHere</h2></a>
+                <a class="navbar-brand" href="#"><h2 class="text-warning">YachtBook</h2></a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar"
                         aria-label="Toggle">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="mob-navbar">
-                    <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+                    <ul class="navbar-nav mb-2 mb-lg-0 flex-fill">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{{ path('yacht_index') }}">Yachts</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('reservation_index') }}">My reservations</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacts</a>
-                        </li>
-                    </ul>
-                    <div class="d-flex">
-                        {% if not is_granted('ROLE_USER') %}
-                            <a class="btn btn-light ms-3" href="{{ path('login') }}">Login</a>
-                            <a class="btn btn-light ms-3" href="{{ path('app_register') }}">Register</a>
-                        {% endif %}
 
-                        {% if is_granted('ROLE_USER') %}
-                            <a class="btn btn-light ms-3" href="{{ path('app_logout') }}">Logout</a>
+                        <li class="nav-item flex-fill"></li>
+
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <li class="nav-item">
+                                <a class="btn btn-light" href="{{ path('login') }}">Login</a>
+                                <a class="btn btn-light ms-1" href="{{ path('app_register') }}">Register</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="btn btn-light" href="{{ path('app_logout') }}">Logout</a>
+                            </li>
                         {% endif %}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </nav>

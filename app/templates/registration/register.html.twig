@@ -3,15 +3,23 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="row justify-content-center">
+        <div class="card" style="max-width: 22rem;">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+            {{ form_start(registrationForm, { attr: {class: 'card-body'}}) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+            <h5 class="card-title">Register</h5>
+
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn btn-primary">Register</button>
+            {{ form_end(registrationForm) }}
+
+            <div class="card-body text-center">
+                <p>Already have an account? <a class="card-link" href="{{ path('login') }}">Login</a>.</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

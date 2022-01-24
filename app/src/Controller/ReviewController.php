@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Review;
+use App\Entity\User;
 use App\Form\ReviewType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,19 +12,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
- * Require ROLE_ADMIN for all the actions of this controller
- *
- * @IsGranted("ROLE_USER")
- */
 #[Route('/review')]
 class ReviewController extends AbstractController
 {
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/', name: 'review_index', methods: ['GET'])]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         $reviews = $entityManager
             ->getRepository(Review::class)
             ->findAll();

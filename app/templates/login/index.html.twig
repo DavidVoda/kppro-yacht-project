@@ -8,15 +8,26 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+    <div class="row justify-content-center">
+        <div class="card" style="max-width: 22rem;">
+            <form action="{{ path('login') }}" method="post" class="card-body">
+                <h5 class="card-title">Login</h5>
+                <div class="input-group mb-3">
+                    <label for="username" class="input-group-text"><i class="bi-person"></i></label>
+                    <input type="text" class="form-control" id="username" name="_username" placeholder="Email" value="{{ last_username }}"/>
+                </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password"/>
+                <div class="input-group mb-3">
+                    <label for="password" class="input-group-text"><i class="bi-lock"></i></label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="_password"/>
+                </div>
+                <input type="hidden" name="_target_path" value="/yacht"/>
 
-        <input type="hidden" name="_target_path" value="/yacht"/>
-
-        <button type="submit">login</button>
-    </form>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <div class="card-body text-center">
+                <p>Don't have an account? <a class="card-link" href="{{ path('app_register') }}">Register</a>.</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

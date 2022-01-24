@@ -3,21 +3,17 @@
 namespace App\Controller;
 
 use App\Domain\Yacht\YachtImageAssigner;
+use App\Entity\User;
 use App\Entity\Yacht;
 use App\Form\YachtType;
 use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\Uuid;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
- * Require ROLE_ADMIN for all the actions of this controller
- *
- * @IsGranted("ROLE_USER")
- */
 #[Route('/yacht')]
 class YachtController extends AbstractController
 {
@@ -38,11 +34,10 @@ class YachtController extends AbstractController
         ]);
     }
 
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/new', name: 'yacht_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         $yacht = new Yacht();
         $form = $this->createForm(YachtType::class, $yacht);
         $form->handleRequest($request);
@@ -75,11 +70,10 @@ class YachtController extends AbstractController
         ]);
     }
 
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/{id}/edit', name: 'yacht_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Yacht $yacht): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
         $form = $this->createForm(YachtType::class, $yacht);
         $form->handleRequest($request);
 
@@ -108,10 +102,10 @@ class YachtController extends AbstractController
         ]);
     }
 
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/{id}', name: 'yacht_delete', methods: ['POST'])]
     public function delete(Request $request, Yacht $yacht): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete' . $yacht->getId(), $request->request->get('_token'))) {
             $this->entityManager->remove($yacht);
             $this->entityManager->flush();
@@ -120,6 +114,7 @@ class YachtController extends AbstractController
         return $this->redirectToRoute('yacht_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[IsGranted(User::ROLE_ADMIN)]
     #[Route('/{id}/delete-image/{imageIndex}', name: 'yacht_delete_image', methods: ['GET'])]
     public function deleteImage(Yacht $yacht, int $imageIndex): Response
     {

@@ -1,4 +1,47 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_row(form.id) }}
+{{ form_row(form.name) }}
+{{ form_row(form.model) }}
+{{ form_row(form.passengerCount) }}
+{{ form_row(form.pricePerDay) }}
+
+
+    <h2>Images</h2>
+    <div class="row">
+        <div class="col-xl-4 col-lg-6 col-md-8 col-12 mb-4">
+            <div class="card h-100 justify-content-center">
+                <div class="card-body">
+                    {{ form_row(form.image) }}
+
+                    <div class="{{ html_classes({'d-none': type == 'create'}) }}">
+                        {{ form_row(form.upload, { 'label': '<i class="bi-upload"></i>', 'label_html': true, 'attr': {'class': 'btn btn-lg btn-success'}}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for image in yacht.imageFilenames %}
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6 mb-4">
+                <div class="card">
+                    <img src="{{ asset('uploads/yacht-images/' ~ image) }}"
+                         class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">{{ image }}</p>
+                        <a href="{{ path('yacht_delete_image', {id: yacht.id, imageIndex: loop.index0}) }}"
+                           class="btn btn-sm btn-danger"><i class="bi-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+
+<div class="row">
+    <div class="col">
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+        <a href="{{ path('yacht_index') }}" class="btn btn-outline-secondary">Back to list</a>
+    </div>
+</div>
 {{ form_end(form) }}

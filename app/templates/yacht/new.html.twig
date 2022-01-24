@@ -5,7 +5,5 @@
 {% block body %}
     <h1>Create new Yacht</h1>
 
-    {{ include('yacht/_form.html.twig') }}
-
-    <a href="{{ path('yacht_index') }}">back to list</a>
+    {{ include('yacht/_form.html.twig', {'type': 'create'}) }}
 {% endblock %}

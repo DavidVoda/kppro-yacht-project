@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 
@@ -25,6 +26,10 @@ class Yacht
 
     #[ORM\Column]
     private string $pricePerDay;
+
+    /** @var string[] */
+    #[ORM\Column(type: 'json')]
+    private array $imageFilenames = [];
 
     public function __construct()
     {
@@ -108,5 +113,36 @@ class Yacht
     public function setPricePerDay(string $pricePerDay): void
     {
         $this->pricePerDay = $pricePerDay;
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getImageFilenames(): array
+    {
+        return $this->imageFilenames;
+    }
+
+    public function addImage(string $imageFilename): void
+    {
+        $this->setImageFilenames([...$this->getImageFilenames(), $imageFilename]);
+    }
+
+    public function removeImage(string $imageFilename): void
+    {
+        $this->setImageFilenames(
+            array_filter(
+                $this->getImageFilenames(),
+                fn(string $filename) => $filename !== $imageFilename
+            )
+        );
+    }
+
+    /**
+     * @param string[] $imageFilenames
+     */
+    private function setImageFilenames(array $imageFilenames): void
+    {
+        $this->imageFilenames = $imageFilenames;
     }
 }

@@ -20,6 +20,7 @@ fn__main() {
   cp | composer) task__composer "$@" ;;
   c | console) task__console "$@" ;;
   t | test) task__test "$@" ;;
+  f | fixtures) task__fixtures "$@" ;;
   cc | cache-clear) task__cacheClear "$@" ;;
   dc | docker-compose) task__dockerCompose "$@" ;;
   *)
@@ -73,6 +74,10 @@ task__test(){
   fn__dockerComposeExec php-fpm php bin/phpunit "$@"
 }
 
+task__fixtures(){
+  fn__doctrineFixtures
+}
+
 fn__console() {
   fn__dockerComposeExec php-fpm php bin/console "$@"
 }
@@ -99,6 +104,7 @@ fn__doctrineMigrations() {
 }
 
 fn__doctrineFixtures() {
+  rm -rf ${rootDir}/app/public/uploads/yacht-images/*
   fn__console doctrine:fixtures:load -n
 }
 

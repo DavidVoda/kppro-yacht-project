@@ -9,7 +9,6 @@
  - Historie rezervaci
  - Ohodnotit jachtu
 
-
 ## Entities
 
  - Jachta

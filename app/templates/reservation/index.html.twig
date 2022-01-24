@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Yacht</th>
-                <th>Start date</th>
-                <th>End date</th>
+                <th>From - To</th>
+                <th>Price</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,8 +18,10 @@
         {% for reservation in reservations %}
             <tr>
                 <td>{{ reservation.yacht }}</td>
-                <td>{{ reservation.startTime ? reservation.startTime|date('Y-m-d H:i:s T') : '' }}</td>
-                <td>{{ reservation.endTime ? reservation.endTime|date('Y-m-d H:i:s T') : '' }}</td>
+                <td><b>{{ reservation.startTime | date("Y-m-d") }}</b> - <b>{{ reservation.endTime | date("Y-m-d") }}</b>, {{ reservation.days }} days</td>
+                <td>
+                    <u title="{{ reservation.yacht.pricePerDay }} € x {{ reservation.days }} days">{{ reservation.totalPrice }} €</u>
+                </td>
                 <td>
                     <a href="{{ path('reservation_show', {'id': reservation.id}) }}">show</a>
                     <a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
@@ -33,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('reservation_new') }}">Create new</a>
+    <a href="{{ path('yacht_index') }}">Find a yacht to book</a>
 {% endblock %}

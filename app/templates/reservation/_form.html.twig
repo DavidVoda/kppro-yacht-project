@@ -1,14 +1,46 @@
-{{ form_start(form) }}
-    {{ form_row(form.yacht) }}
-    {{ form_row(form.startTime) }}
-    {{ form_row(form.endTime) }}
+{{ form_start(form, {attr: {class: "row", autocomplete: "off"}}) }}
+<div class="col">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img
+                        src="{{ asset('uploads/yacht-images/' ~ reservation.yacht.getFirstImage) }}"
+                        class="img-fluid rounded-start h-100" alt="..."
+                        style="object-fit: cover">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">{{ reservation.yacht.name }}</h5>
+                    <dl>
+                        <dt>Model</dt>
+                        <dd>{{ reservation.yacht.model }}</dd>
 
-    <div class="input-group date">
-        <input type="text" class="form-control" value="12-02-2012">
-        <div class="input-group-addon">
-            <span class="glyphicon glyphicon-th"></span>
+                        <dt>Capacity</dt>
+                        <dd>{{ reservation.yacht.passengerCount }} persons</dd>
+
+                        <dt>Price per day</dt>
+                        <dd>{{ reservation.yacht.pricePerDay }} €</dd>
+                    </dl>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <button class="btn">{{ button_label|default('Save') }}</button>
+</div>
+<div class="col">
+    <div class="row">
+        <div id="date-range" class="input-group" data-disabled-dates="{{ disabledDates }}">
+            {{ form_widget(form.startTime, {'attr': {placeholder: 'From date'}} ) }}
+            <span class="input-group-text">to</span>
+            {{ form_widget(form.endTime, {'attr': {placeholder: 'To date'}} ) }}
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col">
+            <p>Jachts can be picked from 12:00 on the first day of the booking and must be returned the last day by 18:00.</p>
+            <p id="priceCalculation" style="display: none"><span id="pricePerDay">{{ reservation.yacht.pricePerDay }}</span> € x <span id="days">8</span> days will be <b><span id="totalPrice">12301</span> € in total</b>.</p>
+            <button class="btn btn-primary">{{ button_label|default('Book') }}</button>
+        </div>
+    </div>
+</div>
 {{ form_end(form) }}

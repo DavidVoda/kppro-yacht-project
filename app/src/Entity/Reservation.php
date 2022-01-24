@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use DateTimeImmutable;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
@@ -31,7 +32,6 @@ class Reservation
 
     public function __construct()
     {
-
     }
 
     /**
@@ -82,8 +82,6 @@ class Reservation
         $this->user = $user;
     }
 
-
-
     /**
      * @return DateTimeImmutable
      */
@@ -93,11 +91,11 @@ class Reservation
     }
 
     /**
-     * @param DateTimeImmutable $startTime
+     * @param DateTimeInterface $startTime
      */
-    public function setStartTime(DateTimeImmutable $startTime): void
+    public function setStartTime(DateTimeInterface $startTime): void
     {
-        $this->startTime = $startTime;
+        $this->startTime = DateTimeImmutable::createFromInterface($startTime);
     }
 
     /**
@@ -109,10 +107,20 @@ class Reservation
     }
 
     /**
-     * @param DateTimeImmutable $endTime
+     * @param DateTimeInterface $endTime
      */
-    public function setEndTime(DateTimeImmutable $endTime): void
+    public function setEndTime(DateTimeInterface $endTime): void
     {
-        $this->endTime = $endTime;
+        $this->endTime = DateTimeImmutable::createFromInterface($endTime);
+    }
+
+    public function getDays(): int
+    {
+        return $this->endTime->diff($this->startTime)->days;
+    }
+
+    public function getTotalPrice(): int
+    {
+        return $this->getDays() * $this->getYacht()->getPricePerDay();
     }
 }

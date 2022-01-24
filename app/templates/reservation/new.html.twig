@@ -3,9 +3,9 @@
 {% block title %}New Reservation{% endblock %}
 
 {% block body %}
-    <h1>Create new Reservation</h1>
+    <h1>Reserve {{ reservation.yacht.name }}</h1>
 
-    {{ include('reservation/_form.html.twig') }}
+    {{ include('reservation/_form.html.twig', {reservation: reservation, disabledDates: disabledDates}) }}
 
     <a href="{{ path('reservation_index') }}">back to list</a>
 {% endblock %}

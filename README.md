@@ -15,4 +15,3 @@
  - Rezervace
  - Uzivatel
  - Recenze
- - 

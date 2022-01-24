@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 class Yacht
@@ -16,18 +17,28 @@ class Yacht
     private UuidInterface $id;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "This field is mandatory")]
+    #[Assert\Length(max: "50", maxMessage: "Maximum number of characters is 50")]
     private string $name;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "This field is mandatory")]
     private string $model;
 
     #[ORM\Column]
+
+    #[Assert\NotNull(message: "This field is mandatory")]
+    #[Assert\Length(max: "250", maxMessage: "Maximum number of characters is 250")]
     private string $description;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "This field is mandatory")]
+    #[Assert\Positive(message: "Count must be higher then zero")]
+    #[Assert\LessThan(value: 50, message: "Passenger count must be lesser then 50")]
     private int $passengerCount;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "This field is mandatory")]
     private string $pricePerDay;
 
     /** @var string[] */

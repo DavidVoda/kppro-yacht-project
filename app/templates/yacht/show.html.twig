@@ -32,10 +32,10 @@
             <td>{{ yacht.pricePerDay }}</td>
         </tr>
         <tr>
-            <th>Images</th>
+            <th></th>
             <td>
                 {% for image in yacht.imageFilenames %}
-                    <img src="{{ asset('uploads/yacht-images/' ~ image) }}"
+                    <img class="img-thumbnail" src="{{ asset('uploads/yacht-images/' ~ image) }}"
                          style="width: 10rem; height: 10rem; object-fit: cover">
                 {% endfor %}
             </td>

@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 class Review
@@ -25,9 +26,13 @@ class Review
     private User $user;
 
     #[ORM\Column]
+    #[Assert\NotNull(message: "This field is mandatory")]
+    #[Assert\LessThan(value: 500, message: "Maximum number of characters is 500")]
     private string $text;
 
     #[ORM\Column]
+    #[Assert\PositiveOrZero(message: "Rating cannot be negative number")]
+    #[Assert\LessThanOrEqual(value: 10, message: "Rating cannot be higher then 10")]
     private int $rating;
 
     #[ORM\Column(type: 'datetimetz_immutable')]

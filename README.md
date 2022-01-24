@@ -8,7 +8,6 @@
  - Zobrazeni detailu jachty
  - Historie rezervaci
  - Ohodnotit jachtu
- - Oblibene jachty
 
 
 ## Entities

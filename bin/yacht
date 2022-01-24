@@ -44,6 +44,10 @@ task__reinit() {
 
   task__cacheClear
 
+  fn__console doctrine:database:drop --force
+
+  fn__console doctrine:database:create
+
   fn__doctrineMigrations
 
   fn__doctrineFixtures

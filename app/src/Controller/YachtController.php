@@ -21,8 +21,9 @@ class YachtController extends AbstractController
 
     public function __construct(
         private EntityManagerInterface $entityManager,
-        private YachtImageAssigner $assigner
-    ) {
+        private YachtImageAssigner     $assigner
+    )
+    {
     }
 
     #[Route('/', name: 'yacht_index', methods: ['GET'])]

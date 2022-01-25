@@ -18,7 +18,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReservationController extends AbstractController
 {
-
     public function __construct(
         private YachtRepository         $yachtRepository,
         private ReservationRepository   $reservationRepository,

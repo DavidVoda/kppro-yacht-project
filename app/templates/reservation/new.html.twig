@@ -3,9 +3,13 @@
 {% block title %}New Reservation{% endblock %}
 
 {% block body %}
-    <h1>Book {{ reservation.yacht.name }}</h1>
+    <div class="d-flex bd-highlight">
+        <div class="flex-grow-1"><h1>Book {{ reservation.yacht.name }}</h1></div>
+        <div>
+            <a class="btn btn-dark" href="{{ path('yacht_index') }}">Back</a>
+        </div>
+    </div>
 
     {{ include('reservation/_form.html.twig', {reservation: reservation, disabledDates: disabledDates}) }}
 
-    <a href="{{ path('reservation_index') }}">back to list</a>
 {% endblock %}

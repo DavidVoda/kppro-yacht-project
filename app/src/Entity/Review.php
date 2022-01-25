@@ -6,7 +6,6 @@ use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
@@ -27,7 +26,7 @@ class Review
 
     #[ORM\Column]
     #[Assert\NotNull(message: "This field is mandatory")]
-    #[Assert\LessThan(value: 500, message: "Maximum number of characters is 500")]
+    #[Assert\Length(max: 500, maxMessage: "Maximum number of characters is 500")]
     private string $text;
 
     #[ORM\Column]

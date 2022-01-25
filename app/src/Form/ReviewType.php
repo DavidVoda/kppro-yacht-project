@@ -16,7 +16,6 @@ class ReviewType extends AbstractType
             ->add('id', HiddenType::class)
             ->add('text')
             ->add('rating')
-            ->add('yacht', HiddenType::class)
             ->add('createDate', HiddenType::class)
         ;
     }

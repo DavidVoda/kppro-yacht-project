@@ -26,14 +26,14 @@ class ReservationFixtures extends Fixture implements DependentFixtureInterface
         $user2 = $manager->find(User::class, UserFixtures::USER_2_ID);
 
         $reservation1 = new Reservation();
-        $reservation1 -> setId(Uuid::fromString('9ecdf039-ab39-4936-83fc-9c28bc6283c4'));
-        $reservation1 -> setYacht($yacht1);
-        $reservation1 -> setUser($user2);
-        $reservation1 -> setStartTime(DateTimeImmutable::createFromFormat(
+        $reservation1->setId(Uuid::fromString('9ecdf039-ab39-4936-83fc-9c28bc6283c4'));
+        $reservation1->setYacht($yacht1);
+        $reservation1->setUser($user2);
+        $reservation1->setStartTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
             '2021-01-01T12:00:00.000+00:00'
         ));
-        $reservation1 -> setEndTime(DateTimeImmutable::createFromFormat(
+        $reservation1->setEndTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
             '2021-01-08T12:00:00.000+00:00'
         ));
@@ -41,14 +41,14 @@ class ReservationFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($reservation1);
 
         $reservation2 = new Reservation();
-        $reservation2 -> setId(Uuid::fromString('d9c680d1-e28c-4585-a28f-296cc2fdf351'));
-        $reservation2 -> setYacht($yacht1);
-        $reservation2 -> setUser($user2);
-        $reservation2 -> setStartTime(DateTimeImmutable::createFromFormat(
+        $reservation2->setId(Uuid::fromString('d9c680d1-e28c-4585-a28f-296cc2fdf351'));
+        $reservation2->setYacht($yacht1);
+        $reservation2->setUser($user2);
+        $reservation2->setStartTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
             '2021-01-01T12:00:00.000+00:00'
         ));
-        $reservation2 -> setEndTime(DateTimeImmutable::createFromFormat(
+        $reservation2->setEndTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
             '2021-01-08T12:00:00.000+00:00'
         ));
@@ -56,31 +56,31 @@ class ReservationFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($reservation2);
 
         $reservation3 = new Reservation();
-        $reservation3 -> setId(Uuid::fromString('22f1202b-5ce1-4647-abbb-8b2b86ce66c1'));
-        $reservation3 -> setYacht($yacht1);
-        $reservation3 -> setUser($user2);
-        $reservation3 -> setStartTime(DateTimeImmutable::createFromFormat(
+        $reservation3->setId(Uuid::fromString('22f1202b-5ce1-4647-abbb-8b2b86ce66c1'));
+        $reservation3->setYacht($yacht1);
+        $reservation3->setUser($user2);
+        $reservation3->setStartTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-01-08T12:00:00.000+00:00'
+            '2022-01-08T12:00:00.000+00:00'
         ));
-        $reservation3 -> setEndTime(DateTimeImmutable::createFromFormat(
+        $reservation3->setEndTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-01-20T12:00:00.000+00:00'
+            '2022-01-20T12:00:00.000+00:00'
         ));
 
         $manager->persist($reservation3);
 
         $reservation4 = new Reservation();
-        $reservation4 -> setId(Uuid::fromString('8a4497d9-39d3-4b75-aaaf-03910a58bdae'));
-        $reservation4 -> setYacht($yacht1);
-        $reservation4 -> setUser($user2);
-        $reservation4 -> setStartTime(DateTimeImmutable::createFromFormat(
+        $reservation4->setId(Uuid::fromString('8a4497d9-39d3-4b75-aaaf-03910a58bdae'));
+        $reservation4->setYacht($yacht1);
+        $reservation4->setUser($user2);
+        $reservation4->setStartTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-01T12:00:00.000+00:00'
+            '2022-02-01T12:00:00.000+00:00'
         ));
-        $reservation4 -> setEndTime(DateTimeImmutable::createFromFormat(
+        $reservation4->setEndTime(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-24T12:00:00.000+00:00'
+            '2022-02-08T12:00:00.000+00:00'
         ));
 
         $manager->persist($reservation4);

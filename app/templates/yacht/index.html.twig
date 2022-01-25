@@ -21,22 +21,29 @@
                             <p>{{ yacht.pricePerDay }}</p></li>
                     </ul>
                     <div class="card-footer">
-                        <a class="btn btn-dark" href="{{ path('yacht_show', {'id': yacht.id}) }}">Show detail</a>
-                        <a class="btn btn-dark" href="{{ path('reservation_new', {'id': yacht.id}) }}"
-                           class="card-link">Book</a>
+                        <a class="btn btn-primary" href="{{ path('yacht_show', {'id': yacht.id}) }}">Show detail</a>
+                        <a class="btn btn-primary card-link"
+                           href="{{ path('reservation_new', {'id': yacht.id}) }}">Book</a>
 
                         {% if is_granted('ROLE_ADMIN') %}
                             <a class="btn btn-danger" href="{{ path('yacht_edit', {'id': yacht.id}) }}">Edit</a>
-                            <a class="btn btn-danger" href="{{ path('yacht_delete', {'id': yacht.id}) }}">Delete</a>
                         {% endif %}
                     </div>
                 </div>
             </div>
         {% endfor %}
         {% if is_granted('ROLE_ADMIN') %}
-        <div class="col">
-            <a type="button" class="btn btn-outline-secondary card h-100" href="{{ path('yacht_new') }}">+ Add new yacht</a>
-        </div>
+            <div class="col">
+                {#            <h2 class="btn btn-outline-secondary card h-100" href="{{ path('yacht_new') }}">+ New yacht</h2> #}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">To add new yacht for booking click on the button bellow</h5>
+                        <div class="d-grid gap-2">
+                            <a href="{{ path('yacht_new') }}" class="btn btn-primary">New</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         {% endif %}
     </div>
 {% endblock %}

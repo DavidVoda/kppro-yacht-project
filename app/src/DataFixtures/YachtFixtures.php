@@ -22,12 +22,12 @@ class YachtFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $yacht1 = new Yacht();
-        $yacht1 -> setId(self::YACHT_1_ID);
-        $yacht1 -> setName('St. Johnson');
-        $yacht1 -> setModel('Kepork 2000');
-        $yacht1 -> setDescription('Big yacht');
-        $yacht1 -> setPassengerCount(8);
-        $yacht1 -> setPricePerDay(999);
+        $yacht1->setId(self::YACHT_1_ID);
+        $yacht1->setName('St. Johnson');
+        $yacht1->setModel('Kepork 2000');
+        $yacht1->setDescription('Big yacht');
+        $yacht1->setPassengerCount(8);
+        $yacht1->setPricePerDay(999);
 
         $this->assignImage($yacht1, new File(__DIR__ . '/YachtFixtures/st-johnson-2020-04-23.jpg'));
         $this->assignImage($yacht1, new File(__DIR__ . '/YachtFixtures/st-johnson-2020-04-35.jpg'));
@@ -35,24 +35,24 @@ class YachtFixtures extends Fixture
         $manager->persist($yacht1);
 
         $yacht2 = new Yacht();
-        $yacht2 -> setId(self::YACHT_2_ID);
-        $yacht2 -> setName('HMS Fildos');
-        $yacht2 -> setModel('Kepork 2012');
-        $yacht2 -> setDescription('Big yacht');
-        $yacht2 -> setPassengerCount(8);
-        $yacht2 -> setPricePerDay(1500);
+        $yacht2->setId(self::YACHT_2_ID);
+        $yacht2->setName('HMS Fildos');
+        $yacht2->setModel('Kepork 2012');
+        $yacht2->setDescription('Big yacht');
+        $yacht2->setPassengerCount(8);
+        $yacht2->setPricePerDay(1500);
 
         $this->assignImage($yacht2, new File(__DIR__ . '/YachtFixtures/kepork-2012.jpg'));
 
         $manager->persist($yacht2);
 
         $yacht3 = new Yacht();
-        $yacht3 -> setId(self::YACHT_3_ID);
-        $yacht3 -> setName('Mr. Anderson');
-        $yacht3 -> setModel('Matrix 1999');
-        $yacht3 -> setDescription('Big yacht');
-        $yacht3 -> setPassengerCount(9);
-        $yacht3 -> setPricePerDay(1350);
+        $yacht3->setId(self::YACHT_3_ID);
+        $yacht3->setName('Mr. Anderson');
+        $yacht3->setModel('Matrix 1999');
+        $yacht3->setDescription('Big yacht');
+        $yacht3->setPassengerCount(9);
+        $yacht3->setPricePerDay(1350);
 
         $this->assignImage($yacht3, new File(__DIR__ . '/YachtFixtures/matrix-1.jpg'));
         $this->assignImage($yacht3, new File(__DIR__ . '/YachtFixtures/matrix-2.jpg'));
@@ -60,12 +60,12 @@ class YachtFixtures extends Fixture
         $manager->persist($yacht3);
 
         $yacht4 = new Yacht();
-        $yacht4 -> setId(self::YACHT_4_ID);
-        $yacht4 -> setName('IMN Carpenter');
-        $yacht4 -> setModel('Kidos 4C');
-        $yacht4 -> setDescription('Big yacht');
-        $yacht4 -> setPassengerCount(12);
-        $yacht4 -> setPricePerDay(2010);
+        $yacht4->setId(self::YACHT_4_ID);
+        $yacht4->setName('IMN Carpenter');
+        $yacht4->setModel('Kidos 4C');
+        $yacht4->setDescription('Big yacht');
+        $yacht4->setPassengerCount(12);
+        $yacht4->setPricePerDay(2010);
 
         $this->assignImage($yacht4, new File(__DIR__ . '/YachtFixtures/kidos-4c.jpg'));
         $this->assignImage($yacht4, new File(__DIR__ . '/YachtFixtures/kidos-4cc.jpg'));

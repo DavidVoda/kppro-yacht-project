@@ -26,7 +26,6 @@
                 <td>{{ review.rating }}</td>
                 <td>
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="btn btn-danger" href="{{ path('review_edit', {'id': review.id}) }}">Edit</a>
                         <a class="btn btn-danger" href="{{ path('review_delete', {'id': review.id}) }}">Delete</a>
                     {% endif %}
                 </td>

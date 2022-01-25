@@ -8,23 +8,21 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ reservation.id }}</td>
+                <th>Yacht</th>
+                <td>{{ reservation.yacht}}</td>
             </tr>
             <tr>
                 <th>StartTime</th>
-                <td>{{ reservation.startTime ? reservation.startTime|date('Y-m-d H:i:s T') : '' }}</td>
+                <td>{{ reservation.startTime ? reservation.startTime|date('d.m.Y') : '' }}</td>
             </tr>
             <tr>
                 <th>EndTime</th>
-                <td>{{ reservation.endTime ? reservation.endTime|date('Y-m-d H:i:s T') : '' }}</td>
+                <td>{{ reservation.endTime ? reservation.endTime|date('d.m.Y') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('reservation_index') }}">back to list</a>
-
-    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
+    <a class="btn btn-outline-dark" href="{{ path('reservation_index') }}">Back</a>
 
     {{ include('reservation/_delete_form.html.twig') }}
 {% endblock %}

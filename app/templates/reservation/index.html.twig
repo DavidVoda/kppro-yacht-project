@@ -26,7 +26,6 @@
                 </td>
                 {% if is_granted('ROLE_ADMIN') %}
                     <td>
-                        <a class="btn btn-danger" href="{{ path('reservation_edit', {'id': reservation.id}) }}">Edit</a>
                         <a class="btn btn-danger"
                            href="{{ path('reservation_delete', {'id': reservation.id}) }}">Delete</a>
 
@@ -41,5 +40,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-dark" href="{{ path('yacht_index') }}">Find a yacht to book</a>
+    <a class="btn btn-primary" href="{{ path('yacht_index') }}">Find a yacht to book</a>
 {% endblock %}

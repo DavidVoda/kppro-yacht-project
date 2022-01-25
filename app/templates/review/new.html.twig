@@ -3,10 +3,12 @@
 {% block title %}New Review{% endblock %}
 
 {% block body %}
-{#    <h1>Rate yacht - {{ review.yacht }}</h1>#}
-    <h1>Rate yacht</h1>
+    <div class="d-flex bd-highlight">
+        <div class="flex-grow-1"><h1>Rate yacht - {{ review.yacht }}</h1></div>
+        <div>
+            <a class="btn btn-dark" href="{{ path('yacht_show', {'id': review.yacht.id}) }}">Back</a>
+        </div>
+    </div>
 
     {{ include('review/_form.html.twig') }}
-
-    <a href="{{ path('review_index') }}">back to list</a>
 {% endblock %}

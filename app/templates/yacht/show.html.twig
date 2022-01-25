@@ -6,10 +6,10 @@
     <div class="d-flex bd-highlight">
         <div class="flex-grow-1"><h1>Yacht detail - {{ yacht.name }}</h1></div>
         <div>
+            <a class="btn btn-primary" href="{{ path('reservation_new', {'id': yacht.id}) }}">Book</a>
             <a class="btn btn-dark" href="{{ path('yacht_index') }}">Back</a>
             {% if is_granted('ROLE_ADMIN') %}
                 <a class="btn btn-danger" href="{{ path('yacht_edit', {'id': yacht.id}) }}">Edit</a>
-                {{ include('yacht/_delete_form.html.twig') }}
             {% endif %}
         </div>
     </div>

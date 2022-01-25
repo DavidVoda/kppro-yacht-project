@@ -170,8 +170,7 @@ class Yacht
 
     public function getFirstImage(): string
     {
-        //TODO handle null pointer
-        return array_values($this->getImageFilenames())[0];
+        return reset($this->imageFilenames);
     }
 
     /**

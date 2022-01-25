@@ -24,12 +24,12 @@ class ReviewFixtures extends Fixture
         $user2 = $manager->find(User::class, UserFixtures::USER_2_ID);
 
         $review1 = new Review();
-        $review1 -> setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c9'));
-        $review1 -> setYacht($yacht1);
-        $review1 -> setUser($user2);
-        $review1 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
-        $review1 -> setRating(8);
-        $review1 -> setCreateDate(DateTimeImmutable::createFromFormat(
+        $review1->setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c9'));
+        $review1->setYacht($yacht1);
+        $review1->setUser($user2);
+        $review1->setText('Toilet got stuck mid weeek but hey we have sea right?');
+        $review1->setRating(8);
+        $review1->setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
             '2021-02-01T12:00:00.000+00:00'
         ));
@@ -70,7 +70,7 @@ class ReviewFixtures extends Fixture
         $review4 -> setRating(10);
         $review4 -> setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-01T12:00:00.000+00:00'
+            '2020-02-01T12:00:00.000+00:00'
         ));
 
         $manager->persist($review4);
@@ -79,11 +79,11 @@ class ReviewFixtures extends Fixture
         $review5 -> setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c2'));
         $review5 -> setYacht($yacht1);
         $review5 -> setUser($user2);
-        $review5 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
-        $review5 -> setRating(5);
+        $review5 -> setText('Best week of my life!');
+        $review5 -> setRating(10);
         $review5 -> setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-01T12:00:00.000+00:00'
+            '2021-03-01T12:00:00.000+00:00'
         ));
 
         $manager->persist($review1);
@@ -92,11 +92,11 @@ class ReviewFixtures extends Fixture
         $review6 -> setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c5'));
         $review6 -> setYacht($yacht1);
         $review6 -> setUser($user2);
-        $review6 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
-        $review6 -> setRating(8);
+        $review6 -> setText('Got sea sickness');
+        $review6 -> setRating(3);
         $review6 -> setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-01T12:00:00.000+00:00'
+            '2021-05-01T12:00:00.000+00:00'
         ));
 
         $manager->persist($review6);
@@ -105,11 +105,11 @@ class ReviewFixtures extends Fixture
         $review7 -> setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c6'));
         $review7 -> setYacht($yacht1);
         $review7 -> setUser($user2);
-        $review7 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
-        $review7 -> setRating(8);
+        $review7 -> setText('Not bad');
+        $review7 -> setRating(7);
         $review7 -> setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-01T12:00:00.000+00:00'
+            '2021-04-01T12:00:00.000+00:00'
         ));
 
         $manager->persist($review7);
@@ -118,8 +118,8 @@ class ReviewFixtures extends Fixture
         $review8 -> setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c7'));
         $review8 -> setYacht($yacht1);
         $review8 -> setUser($user2);
-        $review8 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
-        $review8 -> setRating(8);
+        $review8 -> setText('Sunburns everywhere :(');
+        $review8 -> setRating(5);
         $review8 -> setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
             '2021-02-01T12:00:00.000+00:00'
@@ -130,12 +130,12 @@ class ReviewFixtures extends Fixture
         $review9 = new Review();
         $review9 -> setId(Uuid::fromString('30cc4aee-22f0-4709-8672-cfa6326954c8'));
         $review9 -> setYacht($yacht1);
-        $review9 -> setUser($user2);
-        $review9 -> setText('Toilet got stuck mid weeek but hey we have sea right?');
-        $review9 -> setRating(8);
+        $review9 -> setUser($user1);
+        $review9 -> setText('Soft beds...');
+        $review9 -> setRating(7);
         $review9 -> setCreateDate(DateTimeImmutable::createFromFormat(
             DateTimeInterface::RFC3339_EXTENDED,
-            '2021-02-01T12:00:00.000+00:00'
+            '2019-02-01T12:00:00.000+00:00'
         ));
 
         $manager->persist($review9);

@@ -84,7 +84,7 @@ fn__console() {
 
 fn__composer() {
   docker run --rm --interactive --tty \
-    --volume $PWD:/app \
+    --volume $rootDir/app:/app \
     --user $(id -u):$(id -g) \
     composer "$@"
 }
